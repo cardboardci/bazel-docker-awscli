@@ -1,0 +1,15 @@
+name: "Build"
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: docker://gcr.io/bazel-public/ubuntu1804:java11
+        with:
+          args: "bazel build //src:*"
