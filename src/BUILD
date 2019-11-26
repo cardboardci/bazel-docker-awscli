@@ -35,3 +35,11 @@ container_image(
         "/workspace",
     ],
 )
+
+# Tests
+
+container_test(
+    name = "awscli_metadata_test",
+    configs = ["//src/test_configs:command.yaml"],
+    image = ":awscli",
+)
