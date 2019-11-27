@@ -17,14 +17,19 @@ download_pkgs(
     ],
 )
 
+container_image(
+    name = "pkgs_wrapper",
+    base = "@ci_core//image",
+    entrypoint = ["/bin/bash"],
+)
+
 install_pkgs(
     name = "pkgs",
-    image_tar = "@ci_core//image",
+    image_tar = ":pkgs_wrapper.tar",
     installables_tar = ":pkgs_dwnld.tar",
     installation_cleanup_commands = "rm -rf /var/lib/apt/lists/*",
     output_image_name = "pkgs",
 )
-
 
 ## Container
 
