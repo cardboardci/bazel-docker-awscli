@@ -1,11 +1,34 @@
 load("@io_bazel_rules_docker//container:container.bzl", "container_image")
 load("@io_bazel_rules_docker//contrib:test.bzl", "container_test")
 
+## Packages
+
+download_pkgs(
+    name = "pkgs_dwnld",
+    image_tar = "@ci_core//image",
+    packages = [
+        "python",
+        "python-dev",
+        "python-pip",
+        "python3",
+        "python3-pip",
+    ],
+)
+
+install_pkgs(
+    name = "pkgs",
+    image_tar = "@ci_core//image",
+    installables_tar = ":pkgs_dwnld//tar",
+    installation_cleanup_commands = "rm -rf /var/lib/apt/lists/*",
+    output_image_name = "pkgs",
+)
+
+
 ## Container
 
 container_image(
     name = "awscli",
-    base = "@ci_core//image",
+    base = ":pkgs//image",
     env = {
         "CARDBOARDCI_WORKSPACE": "/workspace",
     },
