@@ -1,0 +1,14 @@
+metadataTest:
+  env:
+    - key: CARDBOARDCI_WORKSPACE
+      value: /workspace
+  labels:
+    - key: 'maintainer'
+      value: 'CardboardCI'
+    - key: 'org.label-schema.schema-version'
+      value: '1.0'
+    - key: 'org.label-schema.vendor'
+      value: 'cardboardci'
+    - key: 'org.label-schema.architecture'
+      value: 'amd64'
+  volumes: ["/workspace"]

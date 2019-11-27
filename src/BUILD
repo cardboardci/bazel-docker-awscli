@@ -41,6 +41,6 @@ container_image(
 
 container_test(
     name = "awscli_metadata_test",
-    configs = ["//src/test_configs:command.yaml"],
+    configs = ["//src/test_configs:metadata.yaml"],
     image = ":awscli",
 )
