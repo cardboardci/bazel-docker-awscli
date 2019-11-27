@@ -20,7 +20,7 @@ download_pkgs(
 install_pkgs(
     name = "pkgs",
     image_tar = "@ci_core//image",
-    installables_tar = ":pkgs_dwnld//tar",
+    installables_tar = ":pkgs_dwnld.tar",
     installation_cleanup_commands = "rm -rf /var/lib/apt/lists/*",
     output_image_name = "pkgs",
 )
