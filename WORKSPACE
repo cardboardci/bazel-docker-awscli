@@ -27,10 +27,9 @@ load("@io_bazel_rules_docker//container:pull.bzl", "container_pull")
 
 container_pull(
     name = "ci_core",
-    registry = "docker.io",
-    repository = "ubuntu",
+    registry = "index.docker.io",
+    repository = "library/ubuntu",
     digest = "sha256:cb6a3a1298c73e3248b6b07ef3c78a14df4bade77b4be1ad725f8f5f2785e348"
-    # tag = "focal-20191030",
 )
 
 http_file(
