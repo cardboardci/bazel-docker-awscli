@@ -12,6 +12,4 @@ jobs:
           args: "bazel build //src:all"
       - uses: docker://gcr.io/bazel-public/ubuntu1804:java11
         with:
-          args: "bazel test //src:all"
-      - run: ls bazel-out/*/*/*/* && cat bazel-out/k8-fastbuild/testlogs/src/awscli_metadata_test/test.log
-        if: failure()
+          args: "bazel test --test_output=all //src:all"
