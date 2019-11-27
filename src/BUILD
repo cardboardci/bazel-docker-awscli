@@ -66,6 +66,7 @@ container_image(
     volumes = [
         "/workspace",
     ],
+    workdir = "/workspace"
 )
 
 # Tests
