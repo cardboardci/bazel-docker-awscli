@@ -36,7 +36,7 @@ install_pkgs(
 container_image(
     name = "awscli",
     base = ":pkgs.tar",
-    entrypoint = [],
+    entrypoint = ["/bin/sh"],
     env = {
         "CARDBOARDCI_WORKSPACE": "/workspace",
     },
