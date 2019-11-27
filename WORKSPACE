@@ -27,9 +27,9 @@ load("@io_bazel_rules_docker//container:pull.bzl", "container_pull")
 
 container_pull(
     name = "ci_core",
-    registry = "l.gcr.io",
-    repository = "google/ubuntu1604",
-    tag = "latest",
+    registry = "docker.io",
+    repository = "ubuntu",
+    tag = "focal-20191030",
 )
 
 http_file(
