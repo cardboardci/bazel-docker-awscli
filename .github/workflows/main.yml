@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: docker://gcr.io/bazel-public/ubuntu1804:java11
         with:
-          args: "bazel build //src:all"
+          args: "bazel build //src:awscli"
       - uses: docker://gcr.io/bazel-public/ubuntu1804:java11
         with:
           args: "bazel test --test_output=all //src:all"
