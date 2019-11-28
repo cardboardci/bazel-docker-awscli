@@ -35,8 +35,7 @@ install_pkgs(
 
 container_image(
     name = "awscli",
-    base = ":pkgs.tar",
-    entrypoint = ["/bin/sh"],
+    base = "@ci_core//image",
     env = {
         "CARDBOARDCI_WORKSPACE": "/workspace",
     },
@@ -61,12 +60,14 @@ container_image(
         "org.label-schema.vcs-url": "https://github.com/cardboardci/docker-awscli",
         # "org.label-schema.vcs-ref": "{vcs_ref}",
     },
+    # base = ":pkgs.tar",
+    tars = [":pkgs.tar"],
 
     # The path /workspace is made available for all development work
     volumes = [
         "/workspace",
     ],
-    workdir = "/workspace"
+    workdir = "/workspace",
 )
 
 # Tests
