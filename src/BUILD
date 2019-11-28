@@ -9,7 +9,6 @@ download_pkgs(
     name = "pkgs_dwnld",
     image_tar = "@ci_core//image",
     packages = [
-        "bash",
         "python",
         "python-dev",
         "python-pip",
