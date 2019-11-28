@@ -2,18 +2,18 @@ schemaVersion: 2.0.0
 
 commandTests:
   - name: "python2_test"
-    command: "python"
-    args: ["-V"]
+    command: "which"
+    args: ["python"]
     expectedError: ["Python 2\\..*"]
   - name: "python3_test"
-    command: "python3"
-    args: ["-V"]
+    command: "which"
+    args: ["python3"]
     expectedOutput: ["Python 3\\..*"]
   - name: "pip_test"
-    command: "pip"
-    args: ["-V"]
+    command: "which"
+    args: ["pip"]
     expectedOutput: ["pip \\d+\\..*"]
   - name: "pip3_test"
-    command: "pip3"
-    args: ["-V"]
+    command: "which"
+    args: ["pip3"]
     expectedOutput: ["pip \\d+\\..*"]
