@@ -36,7 +36,8 @@ install_pkgs(
 
 container_image(
     name = "awscli",
-    base = ":pkgs.tar",
+    base = ":pkgs",
+    # base = ":pkgs.tar",
     # base = "@ci_core//image",
     env = {
         "CARDBOARDCI_WORKSPACE": "/workspace",
@@ -72,11 +73,6 @@ container_image(
 
 # Tests
 
-container_image(
-    name = "awscli_test",
-    base = ":awscli.tar",
-)
-
 container_test(
     name = "awscli_metadata_test",
     configs = ["//src/test_configs:metadata.yaml"],
@@ -86,5 +82,5 @@ container_test(
 container_test(
     name = "awscli_command_test",
     configs = ["//src/test_configs:command.yaml"],
-    image = ":awscli_test",
+    image = ":awscli",
 )
