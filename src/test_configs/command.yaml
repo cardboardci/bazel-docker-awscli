@@ -34,3 +34,7 @@ commandTests:
     command: "pip3"
     args: ["-V"]
     expectedOutput: ["pip \\d+\\..*"]
+  - name: "awscli_test"
+    command: "aws"
+    args: ["--version"]
+    expectedError: ["aws-cli\\/\\d+\\..*"]
