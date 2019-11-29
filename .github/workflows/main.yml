@@ -11,4 +11,4 @@ jobs:
         with:
           # entrypoint: /bin/bash
           # args: "bazel --output_base=/tmp/bazel_outputs build //src:awscli"
-          args: "bazel --output_base=/github/workspace/bazel_outputs test --test_output=all //src:all"
+          args: "bazel --output_base=/github/home/bazel_outputs test --test_output=all //src:all"
