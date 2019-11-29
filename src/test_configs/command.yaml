@@ -37,4 +37,4 @@ commandTests:
   - name: "awscli_test"
     command: "aws"
     args: ["--version"]
-    expectedOutput: ["aws-cli\..*"]
+    expectedOutput: ["aws-cli\\..*"]
