@@ -10,4 +10,5 @@ jobs:
       - uses: docker://gcr.io/bazel-public/ubuntu1804:java11
         with:
           # entrypoint: /bin/bash
-          args: "bazel --output_base=/tmp/bazel_outputs build //src:awscli && bazel --output_base=/tmp/bazel_outputs test --test_output=all //src:all"
+          args: "bazel --output_base=/tmp/bazel_outputs build //src:awscli"
+          # args: "bazel --output_base=/tmp/bazel_outputs build //src:awscli && bazel --output_base=/tmp/bazel_outputs test --test_output=all //src:all"
