@@ -17,24 +17,20 @@ fileExistenceTests:
     path: "/usr/bin/grep"
     shouldExist: true
 
-# commandTests:
-#   - name: "ls_test"
-#     command: "ls"
-#     args: ["/usr/bin/"]
-#     expectedOutput: ["."]
-#   - name: "python2_test"
-#     command: "which"
-#     args: ["python"]
-#     expectedOutput: ["/usr/bin/python"]
-#   - name: "python3_test"
-#     command: "which"
-#     args: ["python3"]
-#     expectedOutput: ["/usr/bin/python3"]
-#   - name: "pip_test"
-#     command: "which"
-#     args: ["pip"]
-#     expectedOutput: ["/usr/bin/pip"]
-#   - name: "pip3_test"
-#     command: "which"
-#     args: ["pip3"]
-#     expectedOutput: ["/usr/bin/pip3"]
+commandTests:
+  - name: "python2_test"
+    command: "python"
+    args: ["-V"]
+    expectedError: ["Python 2\\..*"]
+  - name: "python3_test"
+    command: "python3"
+    args: ["-V"]
+    expectedOutput: ["Python 3\\..*"]
+  - name: "pip_test"
+    command: "pip"
+    args: ["-V"]
+    expectedOutput: ["pip \\d+\\..*"]
+  - name: "pip3_test"
+    command: "pip3"
+    args: ["-V"]
+    expectedOutput: ["pip \\d+\\..*"]
