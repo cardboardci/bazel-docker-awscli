@@ -28,8 +28,23 @@ install_pkgs(
 ## Container
 
 container_image(
-    name = "awscli",
+    name = "pip_install",
     base = ":pkgs.tar",
+    cmd = "",
+    entrypoint = "",
+)
+
+container_run_and_commit(
+    name = "awscli_install",
+    commands = [
+        "pip install awscli",
+    ],
+    image = ":pip_install.tar",
+)
+
+container_image(
+    name = "awscli",
+    base = ":awscli_install.tar",
     env = {
         "CARDBOARDCI_WORKSPACE": "/workspace",
     },
