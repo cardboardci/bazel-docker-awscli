@@ -9,5 +9,5 @@ jobs:
       - uses: actions/checkout@v1
       - uses: docker://gcr.io/bazel-public/ubuntu1804:java11
         with:
-          entrypoint: /bin/bash
+          # entrypoint: /bin/bash
           args: "bazel --output_base=/tmp/bazel_outputs build //src:awscli && bazel --output_base=/tmp/bazel_outputs test --test_output=all //src:all"
