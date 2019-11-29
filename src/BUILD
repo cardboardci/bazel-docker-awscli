@@ -17,16 +17,16 @@ download_pkgs(
     ],
 )
 
-container_image(
-    name = "pkgs_wrapper",
-    base = "@ci_core//image",
-    entrypoint = ["/bin/bash"],
-)
+# container_image(
+#     name = "pkgs_wrapper",
+#     base = "@ci_core//image",
+#     entrypoint = ["/bin/bash"],
+# )
 
 install_pkgs(
     name = "pkgs",
-    # image_tar = "@ci_core//image",
-    image_tar = ":pkgs_wrapper.tar",
+    image_tar = "@ci_core//image",
+    # image_tar = ":pkgs_wrapper.tar",
     installables_tar = ":pkgs_dwnld.tar",
     installation_cleanup_commands = "rm -rf /var/lib/apt/lists/*",
     output_image_name = "pkgs",
@@ -36,7 +36,8 @@ install_pkgs(
 
 container_image(
     name = "awscli",
-    base = "@ci_core//image",
+    base = ":pkgs.tar",
+    # base = "@ci_core//image",
     env = {
         "CARDBOARDCI_WORKSPACE": "/workspace",
     },
@@ -61,15 +62,12 @@ container_image(
         "org.label-schema.vcs-url": "https://github.com/cardboardci/docker-awscli",
         # "org.label-schema.vcs-ref": "{vcs_ref}",
     },
-    tars = [
-        ":pkgs.tar",
-    ],
 
     # The path /workspace is made available for all development work
-    volumes = [
-        "/workspace",
-    ],
-    workdir = "/workspace",
+    # volumes = [
+    #     "/workspace",
+    # ],
+    # workdir = "/workspace",
 )
 
 # Tests
