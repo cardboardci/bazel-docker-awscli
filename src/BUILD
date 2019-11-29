@@ -45,7 +45,7 @@ container_run_and_commit(
 
 container_image(
     name = "awscli",
-    base = ":awscli_install.tar",
+    base = ":awscli_install_commit.tar",
     env = {
         "CARDBOARDCI_WORKSPACE": "/workspace",
     },
