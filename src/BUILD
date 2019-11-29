@@ -38,7 +38,8 @@ container_image(
 container_run_and_commit(
     name = "awscli_install",
     commands = [
-        "python -m pip install --upgrade pip setuptools wheel awscli",
+        "python -m pip install --upgrade pip setuptools wheel",
+        "python -m pip install awscli",
     ],
     image = ":pip_install.tar",
 )
