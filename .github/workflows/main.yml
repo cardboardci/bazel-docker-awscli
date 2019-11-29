@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: docker://l.gcr.io/google/bazel
+      - uses: docker://gcr.io/bazel-public/ubuntu1804:java11
         with:
-          args: "bazel --output_base=/workspace/bazel_outputs build //src:awscli"
-      - uses: docker://l.gcr.io/google/bazel
+          args: "bazel --output_base=/tmp/bazel_outputs build //src:awscli"
+      - uses: docker://gcr.io/bazel-public/ubuntu1804:java11
         with:
-          args: "bazel --output_base=/workspace/bazel_outputs test --test_output=all //src:all"
+          args: "bazel --output_base=/tmp/bazel_outputs test --test_output=all //src:all"
