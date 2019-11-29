@@ -27,16 +27,7 @@ load("@io_bazel_rules_docker//container:pull.bzl", "container_pull")
 
 container_pull(
     name = "ci_core",
-    registry = "l.gcr.io",
-    repository = "google/ubuntu1604",
-    tag = "latest",
-)
-
-http_file(
-    name = "gcloud_archive",
-    downloaded_file_path = "google-cloud-sdk.tar.gz",
-    sha256 = "a2205e35b11136004d52d47774762fbec9145bf0bda74ca506f52b71452c570e",
-    urls = [
-        "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-220.0.0-linux-x86_64.tar.gz",
-    ],
+    registry = "index.docker.io",
+    repository = "library/ubuntu",
+    digest = "sha256:cb6a3a1298c73e3248b6b07ef3c78a14df4bade77b4be1ad725f8f5f2785e348"
 )

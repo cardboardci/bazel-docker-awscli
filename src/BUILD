@@ -1,11 +1,35 @@
 load("@io_bazel_rules_docker//container:container.bzl", "container_image")
 load("@io_bazel_rules_docker//contrib:test.bzl", "container_test")
+load("@io_bazel_rules_docker//docker/package_managers:download_pkgs.bzl", "download_pkgs")
+load("@io_bazel_rules_docker//docker/package_managers:install_pkgs.bzl", "install_pkgs")
+
+## Packages
+
+download_pkgs(
+    name = "pkgs_dwnld",
+    image_tar = "@ci_core//image",
+    packages = [
+        "python",
+        "python-dev",
+        "python-pip",
+        "python3",
+        "python3-pip",
+    ],
+)
+
+install_pkgs(
+    name = "pkgs",
+    image_tar = "@ci_core//image",
+    installables_tar = ":pkgs_dwnld.tar",
+    installation_cleanup_commands = "rm -rf /var/lib/apt/lists/*",
+    output_image_name = "pkgs",
+)
 
 ## Container
 
 container_image(
     name = "awscli",
-    base = "@ci_core//image",
+    base = ":pkgs.tar",
     env = {
         "CARDBOARDCI_WORKSPACE": "/workspace",
     },
@@ -28,13 +52,13 @@ container_image(
         "org.label-schema.distribution-scope": "public",
         "org.label-schema.vcs-type": "git",
         "org.label-schema.vcs-url": "https://github.com/cardboardci/docker-awscli",
-        # "org.label-schema.vcs-ref": "{vcs_ref}",
     },
 
     # The path /workspace is made available for all development work
     volumes = [
         "/workspace",
     ],
+    workdir = "/workspace",
 )
 
 # Tests
@@ -42,5 +66,11 @@ container_image(
 container_test(
     name = "awscli_metadata_test",
     configs = ["//src/test_configs:metadata.yaml"],
+    image = ":awscli",
+)
+
+container_test(
+    name = "awscli_command_test",
+    configs = ["//src/test_configs:command.yaml"],
     image = ":awscli",
 )

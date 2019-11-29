@@ -1,19 +1,40 @@
 schemaVersion: 2.0.0
 
-commandTests:
+fileExistenceTests:
   - name: "python2_test"
-    command: "python"
-    args: ["-V"]
-    expectedError: ["Python 2\\..*"]
+    path: "/usr/bin/python"
+    shouldExist: true
   - name: "python3_test"
-    command: "python3"
-    args: ["-V"]
-    expectedOutput: ["Python 3\\..*"]
+    path: "/usr/bin/python3"
+    shouldExist: true
   - name: "pip_test"
-    command: "pip"
-    args: ["-V"]
-    expectedOutput: ["pip \\d+\\..*"]
+    path: "/usr/bin/pip"
+    shouldExist: true
   - name: "pip3_test"
-    command: "pip3"
-    args: ["-V"]
-    expectedOutput: ["pip \\d+\\..*"]
+    path: "/usr/bin/pip3"
+    shouldExist: true
+  - name: "grep_test"
+    path: "/usr/bin/grep"
+    shouldExist: true
+
+# commandTests:
+#   - name: "ls_test"
+#     command: "ls"
+#     args: ["/usr/bin/"]
+#     expectedOutput: ["."]
+#   - name: "python2_test"
+#     command: "which"
+#     args: ["python"]
+#     expectedOutput: ["/usr/bin/python"]
+#   - name: "python3_test"
+#     command: "which"
+#     args: ["python3"]
+#     expectedOutput: ["/usr/bin/python3"]
+#   - name: "pip_test"
+#     command: "which"
+#     args: ["pip"]
+#     expectedOutput: ["/usr/bin/pip"]
+#   - name: "pip3_test"
+#     command: "which"
+#     args: ["pip3"]
+#     expectedOutput: ["/usr/bin/pip3"]
