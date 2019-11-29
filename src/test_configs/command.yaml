@@ -3,7 +3,7 @@ schemaVersion: 2.0.0
 commandTests:
   - name: "ls_test"
     command: "ls"
-    args: ["/tmp/"]
+    args: ["/usr/bin/"]
     expectedOutput: ["."]
   - name: "python2_test"
     command: "which"
