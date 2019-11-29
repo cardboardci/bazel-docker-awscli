@@ -7,9 +7,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: docker://gcr.io/bazel-public/ubuntu1804:java11
-        with:
-          # entrypoint: /bin/bash
-          args: "bash .github/workflows/main.bash"
-          # args: "bazel --output_base=/tmp/bazel_outputs build //src:awscli"
-          # args: "bazel --output_base=/github/home/bazel_outputs test --test_output=all //src:all"
+      - name: bazel test
+        run: |
+        curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
+        echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+        sudo apt update && sudo apt install bazel
+
+        bazel --output_base=/github/home/bazel_outputs test --test_output=all //src:all
+      ### Run install bazel
+      # - uses: docker://gcr.io/bazel-public/ubuntu1804:java11
+      #   with:
+      #     # entrypoint: /bin/bash
+      #     args: "bash .github/workflows/main.bash"
+      #     # args: "bazel --output_base=/tmp/bazel_outputs build //src:awscli"
+      #     # args: "bazel --output_base=/github/home/bazel_outputs test --test_output=all //src:all"
