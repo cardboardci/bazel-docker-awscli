@@ -1,0 +1,17 @@
+slug: bazel-docker-awscli
+description: Building the AWSCLI Docker image in Bazel
+project: cardboardci
+namespace: archive
+status: archived
+icon: icon.svg
+license:
+  type: MIT
+  content: Jonathan Beverly <jrbeverly>
+  year: 2019
+topics: |-
+  [
+    "bazel",
+    "docker",
+    "docker-image",
+    "awscli"
+  ]
